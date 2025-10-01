@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+
+    <!-- Bootstrap overrides -->
+    <style>
+        /* Custom navbar styling */
+        .custom-navbar {
+            background: linear-gradient(135deg, #2E86AB 0%, #236B87 100%) !important;
+            box-shadow: 0 4px 15px rgba(46, 134, 171, 0.3);
+            border-bottom: 3px solid #F24236;
+            padding: 1rem 0;
+        }
+
+        .custom-navbar .navbar-brand {
+            color: #ffffff !important;
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .custom-navbar .navbar-brand:hover {
+            color: #f8f9fa !important;
+            transform: translateY(-1px);
+            transition: all 0.3s ease;
+        }
+
+        .custom-navbar .nav-link {
+            color: #e8f4f8 !important;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.5rem 0.8rem !important;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            margin: 0 2px;
+        }
+
+        .custom-navbar .nav-link:hover {
+            color: #ffffff !important;
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .custom-navbar .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.3);
+            padding: 0.25rem 0.5rem;
+        }
+
+        .custom-navbar .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+        }
+
+        .custom-navbar .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* Adjust body padding for the new navbar height */
+        body {
+            padding-top: 100px;
+        }
+
+        .h2,
+        h2 {
+            font-size: 2rem;
+            padding-top: 6rem;
+            margin-top: -3rem;
+        }
+
+        .h4,
+        h4 {
+            font-size: 1.5rem;
+            padding-top: 6rem;
+            margin-top: -3rem;
+        }
+
+        h3 {
+            padding-top: 3rem;
+        }
+
+        .topmargin {
+            margin-top: -2rem;
+            padding-top: 2rem;
+        }
+
+        code {
+            display: block;
+            line-height: 150%;
+        }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 991.98px) {
+            .custom-navbar .navbar-nav {
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 8px;
+                margin-top: 1rem;
+                padding: 1rem;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            
+            .custom-navbar .nav-link {
+                margin: 2px 0;
+            }
+        }
+    </style>
+
+    <title>ScannerGrouper — Built for Long-Term Operation</title>
+
+</head>
+
+
+
+<body>
+
+    <!-- Put nav into container to center it on the page -->
+    <nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">ScannerGrouper</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-item nav-link" href="#results">Analysis Results</a>
+                    <a class="nav-item nav-link" href="#software">Software</a>
+                    <a class="nav-item nav-link" href="#paperccs">Paper (CCS 2025)</a>
+                    <a class="nav-item nav-link" href="#papernetwork">Paper (Network 2025)</a>
+                    <a class="nav-item nav-link" href="#badges">Badges</a>
+                    <a class="nav-item nav-link" href="#contact">Contact</a>
+                    <a class="nav-item nav-link" href="#views">Views</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+
+        <h2 class="topmargin">ScannerGrouper — Built for Long-Term
+            Operation</h2>
+
+        We are pleased to announce that ScannerGrouper is now capable of long-term operation! ScannerGrouper is a
+        darknet-independent system specifically designed to identify the organizations behind Internet scanners in
+        real-world scenarios. To understand how it works, we highly recommend <a href="#paperccs">our paper</a> for a
+        detailed look at the technical approach. In addition, we published a concise <a href="#papernetwork">survey</a> article to provide the background context for this study.
+
+        <div style="text-align: center; padding: 20px 0;">
+            <img src="images/scannergrouper-architecture-workflow-20250404.png"
+                alt="The architecture and workflow of ScannerGrouper" class="img-fluid"
+                style="max-width: 70%; height: auto;">
+            <p style="margin-top: 10px; font-style: normal; color: #666;">The architecture and workflow of
+                ScannerGrouper</p>
+        </div>
+
+        <br>
+
+        <h2 id="results">Attribution Results of Acknowledged Internet Scanning Organizations</h2>
+
+        Internet scanning organizations normally utilize multiple scanners to distribute scanning tasks. We define a
+        scanner as an entity or program identified by public IP addresses that sends probes / probing packets to one or
+        more remote hosts with the aims of (1) detecting hosts that respond to the packets and (2) extracting
+        information from the response packets sent by the hosts.
+
+        <br><br>
+
+        Unlike earlier Internet scanning organizations, some newer ones openly disclose their scanning objectives on
+        public websites. We term these as acknowledged Internet scanning organizations. Only a few of them have made all
+        of their Internet scanner IP addresses publicly available, and we have compiled these organizations here: <b><a
+                href="https://github.com/lemonhx25/address-range">[link]</a></b>. For other organizations, by leveraging
+        the long-term operation of ScannerGrouper, we are able to identify the public IP addresses of the Internet
+        scanners they employ. In addition, we utilized the well-known <a href="https://www.abuseipdb.com/">AbuseIPDB
+            database</a> to conduct an abuse analysis of these IP addresses. The statistical results of this analysis are presented
+        in the figure below (as of 09.2025).
+
+        <br><br>
+
+        <span style="color: red;">Note:</span> As stated in <a href="#paperccs">our paper</a>, ScannerGrouper does not guarantee 100% accuracy, and potential errors in
+        organizational attribution may exist.
+
+        <br><br>
+
+
+        <div id="plot-scanner-analysis" style="min-width: 310px; height: 800px; margin: 0 auto"></div>
+
+        <br>
+
+        <h2 id="software">Software</h2>
+
+        The ScannerGrouper presented in the CCS paper, together with two honeypot datasets introduced in the paper, have
+        been released as open-source resources.
+        <br>
+
+        Source: <a href="https://github.com/lemonhx25/scannergrouper">github.com/lemonhx25/scannergrouper</a>
+
+
+        <h2 id="paperccs">ScannerGrouper: A Generalizable and Effective Scanning Organization Identification System
+            Toward the OpenWorld</h2>
+
+        <b> Abstract.</b> In recent years, many scanning organizations deploy large numbers of scanners to actively
+        probe the Internet. Identifying the organizations behind these scanners is of significant value. The problem of
+        analyzing the sources of scanners has been investigated in various studies. However, as far as we know, the
+        problem of effectively and generally identifying scanner organizations in real-world scenarios remains unsolved.
+        <br>
+        In this paper,we present ScannerGrouper, a darknet-independent system specifically designed to identify the
+        organizations behind Internet scanners in real-world scenarios. ScannerGrouper leverages monitoring systems
+        capable of capturing service probes, e.g., honeypots, to collect traffic for subsequent analysis. To address the
+        robustness challenge, ScannerGrouper selects features from the payloads of the first service probes sent by
+        scanners through statistical analysis, and aggregates the identification results from multiple service-specific
+        classifiers. To tackle the open-world issue, ScannerGrouper customizes a state-of-the-art open-set model to our
+        specific task, and updates the system incrementally.We conduct extensive experiments to validate ScannerGrouper
+        effectiveness. ScannerGrouper outperforms baseline solutions in identification performance, achieving a weighted
+        average F1-score that is 1.63 to 4.05 times higher.We also experimentally analyze the identification results of
+        unattributed scanners, training time, the performance of possible alternative models of the core module, and the
+        impact of hyperparameters, etc.
+        <br>
+        <b>Paper. </b> Read the CCS version of our paper here: <b><a
+                href="https://www.sigsac.org/ccs/CCS2025/">[PDF]</a></b>.
+        Read the full version of our paper here: <b><a
+                href="https://github.com/lemonhx25/scannergrouper/blob/main/docs/scannergrouper_fullpaper.pdf">[PDF]</a></b>
+        <br>
+        <b>Bib. </b> The BibTeX citation for this paper can be found here: <b><a
+                href="he2025scannergrouper.bib">[bib]</a></b>
+
+
+        <h2 id="papernetwork">Internet Scan Source Identification: A Survey</h2>
+
+        <b> Abstract.</b> Recently, Internet scanning activities have increased significantly, while the purposes and
+        impacts of these scans have grown increasingly complex. Organizations dedicated to enhancing Internet security,
+        as well as malicious ones, both conduct frequent and systematic scans across the entire IPv4 address space and
+        partial IPv6 address space. In this context, the scan source identification, on which scan intelligence relies,
+        is crucial as it supports in-depth analysis of the scanning behavior of organizations and helps uncover the real
+        identity and size of potential attack organizations. <br>
+        In this article, we provide an extensive survey on Internet scan source identification. We summarize the common
+        methodology and propose a taxonomy for classification. Based on this taxonomy, we outline the current state of
+        Internet scan source identification research. Furthermore, we identify existing challenges and suggest future
+        directions in this field.
+        <br>
+        <b>Paper. </b> Read the final version of our paper here: <b><a
+                href="https://ieeexplore.ieee.org/document/11015971">[PDF]</a></b>
+        <br>
+        <b>Bib. </b> The BibTeX citation for this paper can be found here: <b><a
+                href="dong2025internet.bib">[bib]</a></b>
+
+
+
+        <!-- <h2 id="badges">Badges</h2>
+
+  <b>CCS Artifacts Evaluation Badges</b>
+
+  We were awarded all three badges by the CCS Artifacts Evaluation Committee underlining that our published data and scripts are available, functional, and reusable.
+
+	<div class="row align-items-center">
+        <div class="col-md-3">
+			<img src="ccsae/artifacts_available.jpg" alt="CCS Artifacts Evaluation available badge" class="img-fluid"/>
+		</div>
+		<div class="col-md-3">
+			<img src="ccsae/artifacts_evaluated_functional.jpg" alt="CCS Artifacts Evaluation functional badge" class="img-fluid"/>
+		</div>
+		<div class="col-md-3">
+			<img src="ccsae/artifacts_evaluated_reusable.jpg" alt="CCS Artifacts Evaluation reusable badge" class="img-fluid"/>
+		</div>
+	</div> -->
+
+        <h2 id="contact">Contact</h2>
+        <b><a href="https://tsinghuadong.github.io/">Enhuan Dong</a></b>: <b>dongenhuan</b> [AT]
+        <b>tsinghua.edu.cn</b><br>
+        <b>Xin He</a></b>: <b>hexin21</b> [AT]
+        <b>mails.tsinghua.edu.cn</b><br>
+
+
+        <h2 id="views">Global Views</h2>
+        
+        This map shows the approximate geographic locations of visitors to our website, providing insights into the global reach of our research.
+
+        <div id="world-map" style="height: 500px; width: 80%; margin: 20px auto; border-radius: 8px; border: 1px solid #ddd;"></div>
+
+        <p style="font-size: 0.9rem; color: #666; text-align: center; margin-top: 10px;">
+            <em>Note: Locations are approximate and based on IP geolocation data. Privacy is maintained by not storing precise coordinates.</em>
+        </p>
+
+
+        <!-- JS STARTS HERE -->
+        <!-- jQuery -->
+        <script src="js/jquery-3.5.1.min.js"></script>
+
+        <!-- popper.js -->
+        <script src="js/popper.min.js"></script>
+
+        <!-- Bootstrap JS - necessary for expanding the navbar menu -->
+        <script src="js/bootstrap.min.js"></script>
+
+        <!-- Leaflet JS -->
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+                integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+                crossorigin=""></script>
+
+        <!-- Hide navbar on click -->
+        <script>
+            $('.nav-item').on('click', function () {
+                $('.navbar-collapse').collapse('hide');
+            });
+        </script>
+
+        <!-- Highchart plotting libs -->
+        <script src="js/highcharts/highstock.js"></script>
+        <script src="js/highcharts/exporting.js"></script>
+        <script src="js/highcharts/offline-exporting.js"></script>
+        <script src="js/highcharts/export-data.js"></script>
+
+        <!-- Scanner Analysis Chart -->
+        <script>
+            // Set thousands separator as comma
+            Highcharts.setOptions({
+                lang: {
+                    thousandsSep: ','
+                }
+            });
+
+            // Load and create the scanner analysis chart
+            $.getJSON('long-term-website-intelli-lib-1.4.json', function (chartConfig) {
+                // Add custom tooltip formatter
+                chartConfig.tooltip.formatter = function () {
+                    var s = '<b>' + this.x + '</b><br/>';
+                    this.points.forEach(function (point) {
+                        s += '<span style="color:' + point.color + '">●</span> ' +
+                            point.series.name + ': <b>' + point.y.toLocaleString() + '</b><br/>';
+                    });
+                    var totalPoint = this.points.find(p => p.series.name === 'Total Scanner IPs');
+                    var abusivePoint = this.points.find(p => p.series.name === 'Abusive Scanner IPs');
+                    if (totalPoint && abusivePoint) {
+                        var percentage = ((abusivePoint.y / totalPoint.y) * 100).toFixed(1);
+                        s += 'Abusive Rate: <b>' + percentage + '%</b>';
+                    }
+                    return s;
+                };
+                Highcharts.chart('plot-scanner-analysis', chartConfig);
+            }).fail(function (jqxhr, textStatus, error) {
+                console.error('Failed to load scanner analysis JSON:', textStatus, error);
+            });
+        </script>
+
+        <!-- World Map Script -->
+        <script>
+            // Initialize the world map
+            function initWorldMap() {
+                try {
+                    // Create the map centered on the world
+                    var map = L.map('world-map').setView([20, 0], 2);
+
+                    // Add OpenStreetMap tile layer
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '© OpenStreetMap contributors',
+                        maxZoom: 18,
+                    }).addTo(map);
+
+                    // Custom marker icon for visitors
+                    var visitorIcon = L.divIcon({
+                        className: 'custom-div-icon',
+                        html: '<div style="background-color: #F24236; width: 12px; height: 12px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>',
+                        iconSize: [16, 16],
+                        iconAnchor: [8, 8]
+                    });
+
+                    // Sample visitor locations (in a real application, this would come from your analytics)
+                    var visitorLocations = [
+                        { lat: 39.9042, lng: 116.4074, city: "Beijing, China", visits: 15 },
+                        { lat: 40.7128, lng: -74.0060, city: "New York, USA", visits: 8 },
+                        { lat: 51.5074, lng: -0.1278, city: "London, UK", visits: 6 },
+                        { lat: 35.6762, lng: 139.6503, city: "Tokyo, Japan", visits: 12 },
+                        { lat: 48.8566, lng: 2.3522, city: "Paris, France", visits: 4 },
+                        { lat: 52.5200, lng: 13.4050, city: "Berlin, Germany", visits: 7 },
+                        { lat: 37.7749, lng: -122.4194, city: "San Francisco, USA", visits: 9 },
+                        { lat: -33.8688, lng: 151.2093, city: "Sydney, Australia", visits: 3 },
+                        { lat: 55.7558, lng: 37.6176, city: "Moscow, Russia", visits: 5 },
+                        { lat: 28.6139, lng: 77.2090, city: "New Delhi, India", visits: 11 },
+                        { lat: 1.3521, lng: 103.8198, city: "Singapore", visits: 6 },
+                        { lat: 45.4642, lng: 9.1900, city: "Milan, Italy", visits: 4 },
+                        { lat: 59.3293, lng: 18.0686, city: "Stockholm, Sweden", visits: 3 },
+                        { lat: 50.0755, lng: 14.4378, city: "Prague, Czech Republic", visits: 2 },
+                        { lat: 25.2048, lng: 55.2708, city: "Dubai, UAE", visits: 4 }
+                    ];
+
+                    // Add markers for each visitor location
+                    visitorLocations.forEach(function(location) {
+                        var marker = L.marker([location.lat, location.lng], { icon: visitorIcon })
+                            .addTo(map)
+                            .bindPopup(`
+                                <div style="text-align: center; min-width: 150px;">
+                                    <strong>${location.city}</strong><br>
+                                    <span style="color: #2E86AB;">Visits: ${location.visits}</span>
+                                </div>
+                            `);
+                    });
+
+                    // Get current visitor's location (using a free IP geolocation service)
+                    getCurrentVisitorLocation(map, visitorIcon);
+
+                } catch (error) {
+                    console.error('Error initializing world map:', error);
+                    document.getElementById('world-map').innerHTML = 
+                        '<div style="display: flex; align-items: center; justify-content: center; height: 100%; color: #666;">Unable to load map. Please check your internet connection.</div>';
+                }
+            }
+
+            // Function to get current visitor's location
+            function getCurrentVisitorLocation(map, visitorIcon) {
+                // Using a free IP geolocation service
+                fetch('https://ipapi.co/json/')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.latitude && data.longitude) {
+                            var currentLocation = [data.latitude, data.longitude];
+                            var city = data.city || 'Unknown City';
+                            var country = data.country_name || 'Unknown Country';
+                            
+                            // Add marker for current visitor
+                            var currentVisitorIcon = L.divIcon({
+                                className: 'custom-div-icon',
+                                html: '<div style="background-color: #2E86AB; width: 14px; height: 14px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.4); animation: pulse 2s infinite;"></div>',
+                                iconSize: [20, 20],
+                                iconAnchor: [10, 10]
+                            });
+
+                            L.marker(currentLocation, { icon: currentVisitorIcon })
+                                .addTo(map)
+                                .bindPopup(`
+                                    <div style="text-align: center; min-width: 150px;">
+                                        <strong>Your Location</strong><br>
+                                        <span style="color: #2E86AB;">${city}, ${country}</span><br>
+                                        <small style="color: #666;">Current Visit</small>
+                                    </div>
+                                `)
+                                .openPopup();
+                        }
+                    })
+                    .catch(error => {
+                        console.log('Could not get visitor location:', error);
+                        // Fallback to default location if geolocation fails
+                    });
+            }
+
+            // Initialize map when document is ready
+            $(document).ready(function() {
+                // Add some CSS for the pulsing animation
+                var style = document.createElement('style');
+                style.textContent = `
+                    @keyframes pulse {
+                        0% { transform: scale(1); opacity: 1; }
+                        50% { transform: scale(1.2); opacity: 0.7; }
+                        100% { transform: scale(1); opacity: 1; }
+                    }
+                `;
+                document.head.appendChild(style);
+
+                // Initialize the map
+                initWorldMap();
+            });
+        </script>
+        <!-- JS ENDS HERE -->
+
+</body>
+
+</html>
