@@ -327,6 +327,13 @@
                     }
                     return s;
                 };
+                // Set yAxis to logarithmic scale for better visualization of different magnitudes
+                chartConfig.yAxis = chartConfig.yAxis || {};
+                chartConfig.yAxis.type = 'logarithmic';
+                // Remove min: 0 since logarithmic scale cannot start from 0
+                delete chartConfig.yAxis.min;
+                // Set minimum value to 1 for logarithmic scale
+                chartConfig.yAxis.min = 1;
                 Highcharts.chart('plot-scanner-analysis', chartConfig);
             }).fail(function (jqxhr, textStatus, error) {
                 console.error('Failed to load scanner analysis JSON:', textStatus, error);
