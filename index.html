@@ -105,7 +105,7 @@
                 margin-left: 0 !important;
                 margin-right: 0 !important;
             }
-            
+
             .custom-navbar .nav-link {
                 margin: 2px 0;
             }
@@ -150,7 +150,8 @@
         We are pleased to announce that ScannerGrouper is now capable of long-term operation! ScannerGrouper is a
         darknet-independent system specifically designed to identify the organizations behind Internet scanners in
         real-world scenarios. To understand how it works, we highly recommend <a href="#paperccs">our paper</a> for a
-        detailed look at the technical approach. In addition, we published a concise <a href="#papernetwork">survey</a> article to provide the background context for this study.
+        detailed look at the technical approach. In addition, we published a concise <a href="#papernetwork">survey</a>
+        article to provide the background context for this study.
 
         <div style="text-align: center; padding: 20px 0;">
             <img src="images/scannergrouper-architecture-workflow-20250404.png"
@@ -177,12 +178,15 @@
                 href="https://github.com/lemonhx25/address-range">[link]</a></b>. For other organizations, by leveraging
         the long-term operation of ScannerGrouper, we are able to identify the public IP addresses of the Internet
         scanners they employ. In addition, we utilized the well-known <a href="https://www.abuseipdb.com/">AbuseIPDB
-            database</a> to conduct an abuse analysis of these IP addresses. We regard scanner IPs with an <em>abuseConfidenceScore</em> no less than 25 as abusive scanner IPs. The statistical results of this analysis are presented
+            database</a> to conduct an abuse analysis of these IP addresses. We regard scanner IPs with an
+        <em>abuseConfidenceScore</em> no less than 25 as abusive scanner IPs. The statistical results of this analysis
+        are presented
         in the figure below (as of 09.2025).
 
         <br><br>
 
-        <span style="color: red;">Note:</span> As stated in <a href="#paperccs">our paper</a>, ScannerGrouper does not guarantee 100% accuracy, and potential errors in
+        <span style="color: red;">Note:</span> As stated in <a href="#paperccs">our paper</a>, ScannerGrouper does not
+        guarantee 100% accuracy, and potential errors in
         organizational attribution may exist.
 
         <br><br>
@@ -251,23 +255,27 @@
 
 
 
-        <!-- <h2 id="badges">Badges</h2>
+        <h2 id="badges">Badges</h2>
 
-  <b>CCS Artifacts Evaluation Badges</b>
+        <b>CCS Artifacts Evaluation Badges</b>
 
-  We were awarded all three badges by the CCS Artifacts Evaluation Committee underlining that our published data and scripts are available, functional, and reusable.
+        We were awarded all three badges by the CCS Artifacts Evaluation Committee underlining that our published data
+        and scripts are available, functional, and reusable.
 
-	<div class="row align-items-center">
-        <div class="col-md-3">
-			<img src="ccsae/artifacts_available.jpg" alt="CCS Artifacts Evaluation available badge" class="img-fluid"/>
-		</div>
-		<div class="col-md-3">
-			<img src="ccsae/artifacts_evaluated_functional.jpg" alt="CCS Artifacts Evaluation functional badge" class="img-fluid"/>
-		</div>
-		<div class="col-md-3">
-			<img src="ccsae/artifacts_evaluated_reusable.jpg" alt="CCS Artifacts Evaluation reusable badge" class="img-fluid"/>
-		</div>
-	</div> -->
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <img src="ccsae/artifacts_available_v1_1.png" alt="CCS Artifact Evaluation Artifacts Available Badge"
+                    class="img-fluid" />
+            </div>
+            <div class="col-md-3">
+                <img src="ccsae/artifacts_evaluated_functional_v1_1.png" alt="CCS Artifact Evaluation Artifacts Evaluated Badge"
+                    class="img-fluid" />
+            </div>
+            <div class="col-md-3">
+                <img src="ccsae/results_reproduced_v1_1.png" alt="CCS Artifact Evaluation Results Reproduced Badge"
+                    class="img-fluid" />
+            </div>
+        </div>
 
         <h2 id="contact">Contact</h2>
         <b><a href="https://tsinghuadong.github.io/">Enhuan Dong</a></b>: <b>dongenhuan</b> [AT]
@@ -311,7 +319,7 @@
             });
 
             // Load and create the scanner analysis chart
-            $.getJSON('long-term-website-intelli-lib-1.4.json', function (chartConfig) {
+            $.getJSON('long-term-website-intelli-lib-1.5.json', function (chartConfig) {
                 // Add custom tooltip formatter
                 chartConfig.tooltip.formatter = function () {
                     var s = '<b>' + this.x + '</b><br/>';

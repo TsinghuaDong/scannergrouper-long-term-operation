@@ -1,0 +1,83 @@
+{
+  "chart": {
+    "type": "bar",
+    "height": 800
+  },
+  "title": {
+    "text": "Internet Scanner IP Distribution by Organization"
+  },
+  "subtitle": {
+    "text": "Total Scanner IPs vs Abusive Scanner IPs"
+  },
+  "xAxis": {
+    "categories": [
+      "Org-1",
+      "Org-2",
+      "Org-3",
+      "Org-4",
+      "Org-5",
+      "Org-6",
+      "Org-7",
+      "Org-8",
+      "Org-9",
+      "Org-10",
+      "Org-11",
+      "Org-12",
+      "Org-13",
+      "Org-14",
+      "Org-15",
+      "Org-16",
+      "Org-17",
+      "Org-18",
+      "Org-19",
+      "Org-20",
+      "Org-21",
+      "Org-22",
+      "Org-23",
+      "Org-24",
+      "Org-25",
+      "Org-26",
+      "Org-27",
+      "Org-28",
+      "Org-29"
+    ],
+    "title": {
+      "text": "Internet Scanning Organizations"
+    }
+  },
+  "yAxis": {
+    "min": 0,
+    "title": {
+      "text": "Number of Scanner IPs"
+    }
+  },
+  "legend": {
+    "reversed": true
+  },
+  "plotOptions": {
+    "bar": {
+      "dataLabels": {
+        "enabled": false
+      }
+    }
+  },
+  "series": [
+    {
+      "name": "Total Scanner IPs",
+      "color": "#2E86AB",
+      "data": [2658, 2104, 21, 32, 1, 276, 1128, 89, 426, 5, 1021, 23, 215, 30, 846, 240, 15, 1017, 198, 81, 136, 337, 1, 4362, 233, 5585, 164, 5, 2013]
+    },
+    {
+      "name": "Abusive Scanner IPs",
+      "color": "#F24236",
+      "data": [1132, 920, 1, 10, 1, 42, 448, 63, 138, 3, 808, 1, 148, 9, 221, 80, 8, 468, 15, 54, 68, 127, 0, 2304, 59, 2013, 164, 3, 428]
+    }
+  ],
+  "tooltip": {
+    "shared": true,
+    "useHTML": true
+  },
+  "credits": {
+    "enabled": false
+  }
+}
